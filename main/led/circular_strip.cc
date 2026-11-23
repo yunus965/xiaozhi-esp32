@@ -205,14 +205,18 @@ void CircularStrip::OnStateChanged() {
         }
         case kDeviceStateListening:
         case kDeviceStateAudioTesting: {
-            StripColor color = { default_brightness_, low_brightness_, low_brightness_ };
-            SetAllColor(color);
+            // Siri Turkuaz Mavisi Dönen Çember (HomePod listening marquee)
+            StripColor low = { 0, 5, 20 };
+            StripColor high = { 0, 180, 255 };
+            Scroll(low, high, 8, 40);
             break;
         }
         case kDeviceStateSpeaking:
         case kDeviceStateNotifying: {
-            StripColor color = { low_brightness_, default_brightness_, low_brightness_ };
-            SetAllColor(color);
+            // Siri Mor / Eflatun / Mavi Nefes Alma Dalgası (HomePod speaking breath)
+            StripColor low = { 20, 0, 50 };
+            StripColor high = { 180, 40, 255 };
+            Breathe(low, high, 15);
             break;
         }
         case kDeviceStateUpgrading: {
